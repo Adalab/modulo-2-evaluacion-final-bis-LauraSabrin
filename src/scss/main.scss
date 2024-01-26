@@ -1,5 +1,16 @@
 @import 'core/variables';
 @import 'core/reset';
 @import 'layout/header';
+@import 'layout/mainBody';
 @import 'layout/footer';
-@import 'pages/index';
+
+.body {
+    background-color: antiquewhite;
+    background-image: url('/images/volleyball.svg');
+    background-repeat: repeat;
+    background-repeat: space 10px;
+    background-size: 50px;
+    background-attachment: fixed;
+    
+}
+//font-family: 'Rubik Burned', system-ui;
