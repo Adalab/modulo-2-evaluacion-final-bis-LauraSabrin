@@ -26,14 +26,13 @@ fetch(urlAllInfo)
   console.error("Error en la petición fetch:", error);
 });
 
-
 const renderTenUsers =()=> {
 for (let i = 0; i <= allInfo.length; i++) {
   allUserSection.innerHTML += `<article class="allUsers">
   <figure class="allUsers__fig"><img class="allUsers__fig--img" src="${allInfo[i].picture.medium}" alt="imagen de usuario"></figure>
-  <h3 class="allUsers__card--h3">${allInfo[i].name.first + ' ' + allInfo[i].name.last}</h3>
-  <p class="allUsers__card--p" >${allInfo[i].location.city}</p>
-  <p class="allUsers__card--p" >${allInfo[i].location.country}</p>
+  <h3 class="allUsers__h3">${allInfo[i].name.first + ' ' + allInfo[i].name.last}</h3>
+  <p class="allUsers__p" >${allInfo[i].location.city}</p>
+  <p class="allUsers__p" >${allInfo[i].location.country}</p>
 </article>`;
 
 console.log(allInfo[i].picture.medium);
@@ -44,6 +43,10 @@ console.log(allInfo[i].location.country);
 }
 renderTenUsers();
 
+
+
+
+//intentos inconclusos:
 
 // fetch(urlAllInfo)
 //   .then((response) => response.json())
@@ -70,6 +73,13 @@ renderTenUsers();
 
 
 
+  // const getSpecificInfo =()=> {
+  //   for (let i = 0; i <= 10; i++) {
+  //     specificInfo.push(allInfo[i].location.city);
+  //     console.log(specificInfo);
+  
+  //   }
+  // }
 
 // const showUsers = () => {
 //   allUserSection.innerHTML = ` <article class ="articleUser">

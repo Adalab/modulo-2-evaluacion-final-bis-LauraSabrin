@@ -1,5 +1,6 @@
 .main {
-  height: 55vh;
+  background-color: lightgreen;
+  height: 60vh;
   display: flex;
   &__btn {
     background-color: rgb(248, 183, 104);
@@ -32,22 +33,44 @@
   &__sections {
     border: 2px solid black;
     min-width: 40vw;
-   min-height: 30vh;
-   margin-top: 35px;
+   min-height: 50vh;
+  //  margin-top: 35px;
    margin-left: 20px;
   }
 }
 .saveBtn {
   position: absolute;
-  top: 160px;
+  top: 140px;
   left: 100px;
-  transform: rotate(10deg);
+  transform: rotate(7deg);
   border: 1px solid #000000;
 }
 .getBtn {
   position: absolute;
-  top: 200px;
-  left: 160px;
-  transform: rotate(-10deg);
+  top: 160px;
+  left: 170px;
+  transform: rotate(-7deg);
   border: 1px solid #000000;
+}
+.allUsers {
+  background-color: yellow;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &__fig {
+    height: fit-content;
+    width: fit-content;
+    &--img {
+      width: 50px;
+
+    }
+  }
+  &__p, &__h3 {
+    width: fit-content;
+    font-family: 'Single Day', cursive; ;
+    font-size: .5rem;
+    text-align: center;
+  }
 }
