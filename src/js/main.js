@@ -7,30 +7,43 @@ const addFriendSection = document.querySelector(".js-addFriends");
 const saveBtn = document.querySelector(".js-saveBtn");
 const getBtn = document.querySelector(".js-getBtn");
 const urlAllInfo = "https://randomuser.me/api/?results=10";
-const urlSpecific =
-  "https://randomuser.me/api/?inc=,name,location,picture,login";
+const sectionUser = document.querySelector(".js-allUsers");
+const cardUser = ('.js-all-users-art');
 let allInfo = [];
-let specificInfo = [];
 let i = " ";
 
+
+
+const getDataUser =()=> {
 fetch(urlAllInfo)
   .then((response) => response.json())
   .then((data) => {
-    // console.log(data);
     allInfo = data.results;
     console.log(allInfo);
     renderTenUsers();
+    
+
   })
+  
   .catch((error) => {
     console.error("Error en la petición fetch:", error);
   });
 
-const renderTenUsers = () => {
-  for (let i = 0; i <= allInfo.length; i++) {
-    allUserSection.innerHTML += `<article class="allUsersArt">
+
+
+// allInfo.push(newProperty);
+// console.log(allInfo);
+// let myInfo = allInfo.concat(newProperty);
+// console.log(myInfo);
+}
+getDataUser();
+
+
+const renderTenUsers = (arrayUsers) => {
+  for (let i = 0; i < allInfo.length; i++) {
+    allUserSection.innerHTML += `<article class="allUsersArt  js-all-users-art" id="${allInfo[i].login.uuid}">
   <figure class="allUsersArt__figallUsersArt__fig"><img class="allUsersArt__fig--img" src="${
-    allInfo[i].picture.medium
-  }" alt="imagen de usuario"></figure>
+    allInfo[i].picture.medium}" alt="imagen de usuario"/></figure>
   <h3 class="allUsersArt__h3">  ${
     allInfo[i].name.first + " " + allInfo[i].name.last
   }</h3>
@@ -42,62 +55,44 @@ const renderTenUsers = () => {
   }</p>
   <p class="allUsersArt__p" >${allInfo[i].location.country}</p>
 </article>`;
-
-    console.log(allInfo[i].picture.medium);
-    console.log(allInfo[i].name.first + " " + allInfo[i].name.last);
-    console.log(allInfo[i].location.city);
-    console.log(allInfo[i].location.country);
+    // console.log(allInfo[i].picture.medium);
+    // const imagen = allInfo[i].picture.medium !== undefined ? allInfo.picture.medium :'esto es undefided';
+    // console.log(imagen);
+    // console.log(allInfo[i].name.first + " " + allInfo[i].name.last);
+    // console.log(allInfo[i].location.city);
+    // console.log(allInfo[i].location.country);
+    console.log(allInfo[i].login.uuid);
   }
+
 };
-renderTenUsers();
 
-//intentos inconclusos:
+const addProperty =()=> {
+const newProperty = {};
+newProperty.isFriend = true;
+console.log(newProperty);
+for (let i = 0; i < allInfo.length; i++) {
+ allInfo[i].isFriend = true;
+  console.log(allInfo);
 
-// fetch(urlAllInfo)
-//   .then((response) => response.json())
-//   .then((data) => {
-//     console.log(data);
-//     allInfo = data.results;
-//     console.log(allInfo);
-//     console.log(allInfo[1].name.first);
-//     console.log(allInfo[2].location.city);
-//     console.log(allInfo[3].login.username);
-//     console.log(allInfo.slice(0, 11));
-//   });
+}
+};
 
-// for (const info of allInfo) {
-//   const names = allInfo[1].name.first;
-//   console.log(allInfo[1].name.first);
-//   if (allInfo[1].name.first !== null ) {
-//     allInfo.push(info);
-//     console.log(allInfo);
+
+
+
+// const handleClick =(event)=>{
+//   event.preventDefault();
+//   console.log(event.target);
+//   const cardClicked = ;
+//   console.log(cardClicked);
+//   console.log('me diste un click');
+//   if (cardClicked === event.target) {
+//     addProperty();
+    
 //   }
+// }; 
 
-// }
 
-// const getSpecificInfo =()=> {
-//   for (let i = 0; i <= 10; i++) {
-//     specificInfo.push(allInfo[i].location.city);
-//     console.log(specificInfo);
 
-//   }
-// }
+cardUser.addEventListener('click', handleClick);
 
-// const showUsers = () => {
-//   allUserSection.innerHTML = ` <article class ="articleUser">
-// <img class="userPicture" src="" alt="foto del usuario">
-// <h2 class="nameTitle"></h2>
-// <span class="userCity" ></span>
-// <span class="userName" ></span>
-// </article> `;
-// };
-
-// for (let i = 0; i <= allInfo.length; i++) {
-//     if (allInfo[i].name !== null || " ") {
-//        const namesUser = allInfo.push(allInfo[i].name);
-//        console.log(allInfo)
-//     }
-
-// }
-// };
-// showUsers ();

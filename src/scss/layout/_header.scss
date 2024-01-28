@@ -2,6 +2,7 @@
   height: 25vh;
   display:flex;
   flex-direction: column;
+
 }
 .nav {
   display: flex;
@@ -20,6 +21,14 @@
     width: 30px;
     height: 30px;
     margin: 10px 10px;
+    @media (min-width: 768px) {
+    width: 45px;
+    height: 45px;
+    @media (min-width: 1080px) {
+      transform: scale(1.2);
+      margin: 10px 30px;
+    }
+    }
    
   }
 }
@@ -31,36 +40,57 @@
   text-align: center;
   align-self: center;
   position: relative;
-  right: 15px;
+  right: 40px;
+  @media (min-width: 768px) {
+    font-size: 50px;
+    @media (min-width: 1080px){
+      transform: scale(1.3);
+    }
+  }
  
 }
 .bannerDiv {
-  
   display:flex;
   height: 4.3rem; 
   width: 90vw;
-  &__figureGirl {
+  &__figure {
     display:flex;
     flex-direction: row;
-      &--img {
+    justify-content: space-around;
+    width: 100vw;
+      &--imgGirl {
       transform: scale(0.9);
+      @media (min-width: 768px) {
+       transform: scale(1.5);
+       @media (min-width: 1080px) {
+        transform: scale(2.5);
+       }
+      }
     }
-  }
-  &__figurePc {
-    display: flex;
-    flex-direction: row;
-    &--img {
+    &--imgTalk {
+      width: 30px;
+      height: 20px;
+      align-self: center;
+      position:relative;
+           right: 70px;
+      bottom: 35px;
+      transform: rotate(10deg);
+      @media (min-width: 768px) {
+        transform: translateX(-100px) translateY(-30px) scale(1.6);
+        @media (min-width: 1080px) {
+          transform: translateX(-200px) translateY(-40px) scale(2) rotate(10deg); 
+        }
+
+       }
+    }
+    &--imgPc {
       width: 60px;
       height: 60px;
+      transform: rotate(5deg);
+      @media (min-width: 1080px) {
+        transform: scale(2) rotate(5deg) translateX(-80px);
+      }
     }
+  } 
   }
-  &__figureTalk {
-    display: flex;
-    flex-direction: row;
-    &--img {
-      width: 20px;
-      height: 20px;
-      transform: rotate(10deg);
-    }
-  }
-}
+
