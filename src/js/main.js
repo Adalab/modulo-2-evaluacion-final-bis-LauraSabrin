@@ -13,7 +13,7 @@ let allInfo = [];
 let i = " ";
 
 
-
+//función para pedir datos API
 const getDataUser =()=> {
 fetch(urlAllInfo)
   .then((response) => response.json())
@@ -22,7 +22,6 @@ fetch(urlAllInfo)
     console.log(allInfo);
     renderTenUsers();
     
-
   })
   
   .catch((error) => {
@@ -38,7 +37,7 @@ fetch(urlAllInfo)
 }
 getDataUser();
 
-
+//función actualizar-pintar en pantalla los 10 usuarios random
 const renderTenUsers = (arrayUsers) => {
   for (let i = 0; i < allInfo.length; i++) {
     allUserSection.innerHTML += `<article class="allUsersArt  js-all-users-art" id="${allInfo[i].login.uuid}">
@@ -66,6 +65,7 @@ const renderTenUsers = (arrayUsers) => {
 
 };
 
+//función añadir propiedad nueva para comprobar si está clicado como amigo
 const addProperty =()=> {
 const newProperty = {};
 newProperty.isFriend = true;
@@ -78,21 +78,17 @@ for (let i = 0; i < allInfo.length; i++) {
 };
 
 
-
-
-// const handleClick =(event)=>{
-//   event.preventDefault();
-//   console.log(event.target);
-//   const cardClicked = ;
-//   console.log(cardClicked);
-//   console.log('me diste un click');
-//   if (cardClicked === event.target) {
-//     addProperty();
+const handleClick =(event)=>{
+  event.preventDefault();
+  console.log(event.currentTarget.id);
+  const cardClicked = ;
+  console.log(cardClicked);
+  console.log('me diste un click');
+  if (cardClicked === event.target) {
+    addProperty();
     
-//   }
-// }; 
-
-
+  }
+}; 
 
 cardUser.addEventListener('click', handleClick);
 

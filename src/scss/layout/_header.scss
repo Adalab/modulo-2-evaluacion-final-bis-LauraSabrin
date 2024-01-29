@@ -86,9 +86,8 @@
     &--imgPc {
       width: 60px;
       height: 60px;
-      transform: rotate(5deg);
       @media (min-width: 1080px) {
-        transform: scale(2) rotate(5deg) translateX(-80px);
+        transform: scale(2)  translateX(-180px);
       }
     }
   } 

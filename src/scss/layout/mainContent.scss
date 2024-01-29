@@ -29,7 +29,7 @@
         font-size: .75rem;
       }
       @media (min-width: 1080px) {
-        font-size: 1rem;;
+        font-size: .8rem;;
         &:hover {
           transform: scale(1.5);
           transition: transform 0.3s ease;
@@ -48,6 +48,10 @@
   position: relative;
   left: 110px;
   bottom: 45px;
+  @media (min-width: 1080px) {
+    left: 160px;
+    bottom: 45px;
+  }
 }
 .allUsers {
   display: flex;
@@ -61,6 +65,9 @@
   padding: 10px 10px;
   gap: 5px;
   min-height: 50vh;
+  @media (min-width: 768px) {
+    justify-content: space-between;
+  }
 }
 .allUsersArt {
   background-color: rgba(255, 127, 80, 0.651);
@@ -78,7 +85,14 @@
   &:hover {
     opacity: 1;
     transform: scale(1.1);
-
+  }
+  @media (min-width: 768px) {
+    transform: scale(1.1);
+  
+    &:hover {
+      opacity: 1;
+      transform: scale(1.3);
+    }
   }
 
   &__fig {
