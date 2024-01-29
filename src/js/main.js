@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 console.log(">> Ready :)");
 
@@ -8,10 +8,10 @@ const saveBtn = document.querySelector(".js-saveBtn");
 const getBtn = document.querySelector(".js-getBtn");
 const urlAllInfo = "https://randomuser.me/api/?results=10";
 const sectionUser = document.querySelector(".js-allUsers");
-const cardUser = ('.js-all-users-art');
+const cardUser = document.querySelector('.js-all-users-art');
 let allInfo = [];
-let i = " ";
 
+let i = " ";
 
 //función para pedir datos API
 const getDataUser =()=> {
@@ -27,20 +27,15 @@ fetch(urlAllInfo)
   .catch((error) => {
     console.error("Error en la petición fetch:", error);
   });
+  
 
-
-
-// allInfo.push(newProperty);
-// console.log(allInfo);
-// let myInfo = allInfo.concat(newProperty);
-// console.log(myInfo);
 }
 getDataUser();
 
 //función actualizar-pintar en pantalla los 10 usuarios random
 const renderTenUsers = (arrayUsers) => {
   for (let i = 0; i < allInfo.length; i++) {
-    allUserSection.innerHTML += `<article class="allUsersArt  js-all-users-art" id="${allInfo[i].login.uuid}">
+    allUserSection.innerHTML += `<article class="allUsersArt js-all-users-art" id="${allInfo[i].login.uuid}">
   <figure class="allUsersArt__figallUsersArt__fig"><img class="allUsersArt__fig--img" src="${
     allInfo[i].picture.medium}" alt="imagen de usuario"/></figure>
   <h3 class="allUsersArt__h3">  ${
@@ -60,35 +55,44 @@ const renderTenUsers = (arrayUsers) => {
     // console.log(allInfo[i].name.first + " " + allInfo[i].name.last);
     // console.log(allInfo[i].location.city);
     // console.log(allInfo[i].location.country);
-    console.log(allInfo[i].login.uuid);
+    // console.log(allInfo[i].login.uuid);
+    
   }
 
 };
-
-//función añadir propiedad nueva para comprobar si está clicado como amigo
+//función añadir propiedad nueva 
 const addProperty =()=> {
 const newProperty = {};
 newProperty.isFriend = true;
 console.log(newProperty);
-for (let i = 0; i < allInfo.length; i++) {
- allInfo[i].isFriend = true;
-  console.log(allInfo);
-
+// for (let i = 0; i < allInfo.length; i++) {
+//  allInfo[i].isFriend = true;
+//   console.log(allInfo);
 }
-};
-
-
+// };
+//función para saber el elemento clicado
 const handleClick =(event)=>{
   event.preventDefault();
-  console.log(event.currentTarget.id);
-  const cardClicked = ;
-  console.log(cardClicked);
-  console.log('me diste un click');
-  if (cardClicked === event.target) {
+ //const cardClicked = event.currentTarget.id;
+  const clicked = event.target;
+  console.log(clicked);
+  const eventArea = event.currentTarget;
+  console.log(eventArea);
+  let allInfoId = [];
+  console.log(allInfoId);
+  allInfoId = allInfo.map(user => user.login.uuid);
+  console.log(allInfoId);
+  for (i = 0; i <=allInfoId.length; i++){
+  if ( clicked === allInfoId ) {
     addProperty();
-    
+    cardUser.classList.add('isFriend');
+   
   }
-}; 
+}
 
-cardUser.addEventListener('click', handleClick);
+ }; 
+ sectionUser.addEventListener('click', handleClick);
+
+
+
 

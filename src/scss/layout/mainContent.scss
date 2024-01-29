@@ -40,16 +40,16 @@
 }
 .saveBtn {
   border: 1px solid #000000;
-  margin-left: 20px;
+  margin-left: 40px;
 }
 .getBtn {
   border: 1px solid #000000;
   margin-top: 20px;
   position: relative;
-  left: 110px;
+  left: 130px;
   bottom: 45px;
   @media (min-width: 1080px) {
-    left: 160px;
+    left: 200px;
     bottom: 45px;
   }
 }

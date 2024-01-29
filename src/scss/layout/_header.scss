@@ -63,7 +63,7 @@
       @media (min-width: 768px) {
        transform: scale(1.5);
        @media (min-width: 1080px) {
-        transform: scale(2.5);
+        transform: scale(1.8);
        }
       }
     }
@@ -76,9 +76,9 @@
       bottom: 35px;
       transform: rotate(10deg);
       @media (min-width: 768px) {
-        transform: translateX(-100px) translateY(-30px) scale(1.6);
+        transform:  scale(1.6);
         @media (min-width: 1080px) {
-          transform: translateX(-200px) translateY(-40px) scale(2) rotate(10deg); 
+          transform: translateX(-140px) translateY(-10px) scale(1.5) ; 
         }
 
        }
@@ -87,7 +87,7 @@
       width: 60px;
       height: 60px;
       @media (min-width: 1080px) {
-        transform: scale(2)  translateX(-180px);
+        transform: scale(1.2)  ;
       }
     }
   } 
