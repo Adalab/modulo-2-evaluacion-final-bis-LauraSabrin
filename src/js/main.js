@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 console.log(">> Ready :)");
 
@@ -12,74 +12,75 @@ const sectionUser = document.querySelector(".js-allUsers");
 let allInfoApi = [];
 let allInfoId = [];
 
-
 //función para pedir datos API
-const getDataUser =()=> {
-fetch(urlAllInfo)
-  .then((response) => response.json())
-  .then((data) => {
-    allInfoApi = data.results;
-    console.log(allInfoApi);
-    renderTenUsers();
-    
-  })
-  
-  .catch((error) => {
-    console.error("Error en la petición fetch:", error);
-  });
-  
+const getDataUser = () => {
+  fetch(urlAllInfo)
+    .then((response) => response.json())
+    .then((data) => {
+      allInfoApi = data.results;
+      console.log(allInfoApi);
+      renderTenUsers();
+    })
 
-}
+    .catch((error) => {
+      console.error("Error en la petición fetch:", error);
+    });
+};
 getDataUser();
 
+//función añadir clase para objeto con propiedad isFriend=true
+const friend = () => {
+  for (let i = 0; i <= allInfoId; i++) {
+    if (allInfoId.contains(isFriend)) {
+      //                                                                                 <------------------- AQUÍ !!
+    }
+  }
+};
 
-//ATASCO!!
-// //función añadir clase isFriend
-// const myFriend =()=> {
-//   if(allInfoId.contains(isFriend = true)) {
-//     allCardUser.  //variable creada local, no puedo
-//   } 
-// }
-
-
-
-//función añadir propiedad nueva 
-const addProperty =()=> {
-  const newProperty = {};
-  newProperty.isFriend = true;
-  console.log(newProperty);
-  // for (let i = 0; i < allInfoApi.length; i++) {
-  //  allInfoApi[i].isFriend = true;
-  //   console.log(allInfoApi);
-  // }
-  
+//función añadir propiedad nueva
+const addProperty = () => {
+  const newProperty = {
+    isFriend: true,
   };
 
+  for (let i = 0; i < allInfoId.length; i++) {
+    allInfoId[i].isFriend = true;
+    newProperty[allInfoId[i]];
+  }
+};
+
 //función para encontrar el id del elemento clicado y añadir propiedad isFriend:
-const handleFriend =(event)=> {
-  console.log(event.currentTarget.id);
+const handleFriend = (event) => {
+  const cardClicked = event.currentTarget;
+  console.log(cardClicked);
   const cardClickedId = event.currentTarget.id;
-  const whoIsClicked = allInfoApi.find((user)=> cardClickedId === user.login.uuid);
-  
-  const checkUSer = allInfoId.findIndex((user) => user.login.uuid === cardClickedId);
-    if(checkUSer === -1) {
-      allInfoId.push(whoIsClicked);
-      addProperty();
-      // renderTenUsers(allInfoId);  si descomento y se ejecuta me multiplica los resultados con cada click.
-      console.log(allInfoId);
-      console.log(whoIsClicked);
-    } 
-}
+  console.log(cardClickedId);
+  //con find() obtengo el primer elemento que cumple mi condición
+  const whoIsClicked = allInfoApi.find(
+    (user) => cardClickedId === user.login.uuid
+  );
+  console.log(whoIsClicked);
+  //con findIndex () busco y encuentro la posición o index de un elemento:
+  const indexUSer = allInfoApi.findIndex(
+    (user) => user.login.uuid === cardClickedId
+  );
+  console.log(indexUSer);
+  //si la posición de
+  if (indexUSer !== -1) {
+    allInfoId.push(whoIsClicked); //debería ser whoIsClicked o cardClicked?
+    addProperty();
+ //                                                               <---------------------------------------AQUÍ!!!
+    // renderTenUsers();   //si descomento y se ejecuta me multiplica los resultados con cada click.
+  }
+};
 
 //función para escuchar evento sobre todos los articles (mis tarjetas de usuario)
-const FindId=()=> {
-  const allCardUser = document.querySelectorAll('.js-all-users-art');
+const FindId = () => {
+  const allCardUser = document.querySelectorAll(".js-all-users-art");
   for (const oneCard of allCardUser) {
-    oneCard.addEventListener('click', handleFriend);
-    
+    oneCard.addEventListener("click", handleFriend);
   }
-
-}
+};
 
 //función para saber el elemento clicado
 // const handleClick =(event)=>{
@@ -93,19 +94,19 @@ const FindId=()=> {
 //     if ( cardClicked === allInfoId ) {
 //           addProperty();
 //           allCardUser.classList.add('isFriend');
-         
 //         }
-//       } 
-
+//       }
 //  sectionUser.addEventListener('click', handleClick);
-
 
 //función actualizar-pintar en pantalla los 10 usuarios random
 const renderTenUsers = (arrayUsers) => {
   for (let i = 0; i < allInfoApi.length; i++) {
-    allUserSection.innerHTML += `<article class="allUsersArt js-all-users-art" id="${allInfoApi[i].login.uuid}">
+    sectionUser.innerHTML += `<article class="allUsersArt js-all-users-art" id="${
+      allInfoApi[i].login.uuid
+    }">
   <figure class="allUsersArt__figallUsersArt__fig"><img class="allUsersArt__fig--img" src="${
-    allInfoApi[i].picture.medium}" alt="imagen de usuario"/></figure>
+    allInfoApi[i].picture.medium
+  }" alt="imagen de usuario"/></figure>
   <h3 class="allUsersArt__h3">  ${
     allInfoApi[i].name.first + " " + allInfoApi[i].name.last
   }</h3>
@@ -117,20 +118,7 @@ const renderTenUsers = (arrayUsers) => {
   }</p>
   <p class="allUsersArt__p" >${allInfoApi[i].location.country}</p>
 </article>`;
-    // console.log(allInfoApi[i].picture.medium);
-    // const imagen = allInfoApi[i].picture.medium !== undefined ? allInfoApi.picture.medium :'esto es undefided';
-    // console.log(imagen);
-    // console.log(allInfoApi[i].name.first + " " + allInfoApi[i].name.last);
-    // console.log(allInfoApi[i].location.city);
-    // console.log(allInfoApi[i].location.country);
-    // console.log(allInfoApi[i].login.uuid);
   }
   FindId();
   // handleClick();
 };
-
-
-
-
-
-
