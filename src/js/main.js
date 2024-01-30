@@ -38,16 +38,16 @@ const friend = () => {
 };
 
 //función añadir propiedad nueva
-const addProperty = () => {
-  const newProperty = {
-    isFriend: true,
-  };
+// const addProperty = () => {
+//   const newProperty = {
+//     isFriend: true,
+//   };
 
-  for (let i = 0; i < allInfoId.length; i++) {
-    allInfoId[i].isFriend = true;
-    newProperty[allInfoId[i]];
-  }
-};
+//   for (let i = 0; i < allInfoId.length; i++) {
+//     allInfoId[i].isFriend = true;
+//     newProperty[allInfoId[i]];
+//   }
+// };
 
 //función para encontrar el id del elemento clicado y añadir propiedad isFriend:
 const handleFriend = (event) => {
@@ -67,12 +67,16 @@ const handleFriend = (event) => {
   console.log(indexUSer);
   //si la posición de
   if (indexUSer !== -1) {
+    allInfoApi[indexUSer].isFriend = true;
+    console.log(allInfoApi);
     allInfoId.push(whoIsClicked); //debería ser whoIsClicked o cardClicked?
-    addProperty();
+    
  //                                                               <---------------------------------------AQUÍ!!!
-    // renderTenUsers();   //si descomento y se ejecuta me multiplica los resultados con cada click.
+    renderTenUsers();   //si descomento y se ejecuta me multiplica los resultados con cada click.
   }
 };
+
+
 
 //función para escuchar evento sobre todos los articles (mis tarjetas de usuario)
 const FindId = () => {
@@ -100,7 +104,10 @@ const FindId = () => {
 
 //función actualizar-pintar en pantalla los 10 usuarios random
 const renderTenUsers = (arrayUsers) => {
+  //limpiar section ""
   for (let i = 0; i < allInfoApi.length; i++) {
+    let friend = "";
+    // if (  )
     sectionUser.innerHTML += `<article class="allUsersArt js-all-users-art" id="${
       allInfoApi[i].login.uuid
     }">
