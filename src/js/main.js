@@ -2,7 +2,7 @@
 
 console.log(">> Ready :)");
 
-const allUserSection = document.querySelector(".js-allUsers");
+// const allUserSection = document.querySelector(".js-allUsers");
 const addFriendSection = document.querySelector(".js-addFriends");
 const saveBtn = document.querySelector(".js-saveBtn");
 const getBtn = document.querySelector(".js-getBtn");
@@ -19,14 +19,18 @@ const getDataUser = () => {
     .then((data) => {
       allInfoApi = data.results;
       renderTenUsers(allInfoApi, sectionUser);
-      localStorage.setItem('users', JSON.stringify('allInfoApi'));
-      
+      handleSave();
     })
     .catch((error) => {
       console.error("Error en la petición fetch:", error);
     });
 };
 getDataUser();
+
+const handleSave = () => {
+  localStorage.setItem('users', JSON.stringify(allInfoApi));
+};
+localStorage.setItem('nombre', 'Pablo');
 
 //función para encontrar el id del elemento clicado y añadir propiedad isFriend:
 const handleFriend = (event) => {
@@ -106,19 +110,23 @@ const renderTenUsers = () => {
   }
   FindId();
 };
-
 getDataUser();
-const handleRecover =()=> {
-  const savedUsers = JSON.parse(localStorage.getItem('allInfoApi'));
-  if (savedUsers  !== null) {
+
+const handleRecover = () => {
+  const savedUsers = JSON.parse(localStorage.getItem('users'));
+  console.log(savedUsers);
+  if (savedUsers !== null) {
     allInfoApi = savedUsers;
-    renderTenUsers(savedUsers, allUserSection);
+    console.log(allInfoApi);
+    renderTenUsers(allInfoApi, sectionUser);
   } else {
     getDataUser();
   }
-  console.log(allInfoApi);
-}
+  
+};
 handleRecover();
 
-saveBtn.addEventListener('click', handleSave);
-getBtn.addEventListener('click', handleRecover);
+saveBtn.addEventListener("click", handleSave);
+getBtn.addEventListener("click", handleRecover);
+
+
