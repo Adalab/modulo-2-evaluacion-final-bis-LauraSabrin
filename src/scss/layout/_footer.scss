@@ -1,41 +1,37 @@
 .footer {
-    background-color: rgba(255, 127, 80, 0.733);
-    height: 5vh;
-    border-top: 3px solid rgba(0, 0, 0, 0.801);
-    margin-top:27px;
-    display: flex;
-    flex-direction: row;
-    align-items: self-end;
-    justify-content: space-between ;
-    position: fixed;
-    bottom: 0px;
-    width: 100vw;
+  background-color: rgba(255, 127, 80, 0.733);
+  height: 5vh;
+  border-top: 3px solid rgba(0, 0, 0, 0.801);
+  margin-top: 27px;
+  display: flex;
+  flex-direction: row;
+  align-items: self-end;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  @media (min-width: 768px) {
+    min-height: 8vh;
+  }
+  &__logo {
+    height: 20px;
+    width: 20px;
+    border-radius: 60%;
+    margin-top: 5px;
+    margin-right: 5px;
     @media (min-width: 768px) {
-        min-height: 8vh;
+      height: 30px;
+      width: 30px;
     }
-    &__logo {
-        height: 20px;
-        width: 20px;
-        border-radius: 60%;
-        margin-top: 5px;
-        margin-right:5px;
-        @media (min-width: 768px) {
-           height: 30px;
-           width: 30px;
-        }
-        
-    }
-    &__copy {
-        font-family: "Rubik Burned", system-ui;
-        font-weight: 700;
-        font-size: small;
-        margin-left: 10px;
-        margin-bottom: 10px;
-       
-    }
-        @media (min-width: 768px) {
-        align-self: center;
-       
-        }
-    
- }
+  }
+  &__copy {
+    font-family: "Rubik Burned", system-ui;
+    font-weight: 700;
+    font-size: small;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  @media (min-width: 768px) {
+    align-self: center;
+  }
+}

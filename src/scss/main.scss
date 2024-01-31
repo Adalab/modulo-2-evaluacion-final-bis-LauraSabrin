@@ -1,38 +1,36 @@
-@import 'core/variables';
-@import 'core/reset';
-@import 'layout/header';
-@import 'layout/mainContent';
-@import 'layout/footer';
+@import "core/variables";
+@import "core/reset";
+@import "layout/header";
+@import "layout/mainContent";
+@import "layout/footer";
 
 .body {
-    background-color: antiquewhite;
-    background-image: url('/images/volleyball.svg');
-    background-repeat: repeat;
-    background-repeat: space 10px;
-    background-size: 50px;
-    background-attachment: fixed;
-    display:flex;
-    flex-direction: column;
-    
+  background-color: antiquewhite;
+  background-image: url("/images/volleyball.svg");
+  background-repeat: repeat;
+  background-repeat: space 10px;
+  background-size: 50px;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
 }
 //font-family: 'Rubik Burned', system-ui;
 
 .isFriend {
-        background-color: rgba(250, 218, 37, 0.637);
-        opacity: 0.9;
-        border: 4px solid rgba(245, 73, 21, 0.671);
-        border-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-items: center;
-        min-width: 80px;
-        min-height: 120px;
-        padding: 0.1rem 0.1rem;
-        box-sizing: content-box;
-        &:hover {
-          opacity: 1.2;
-          transform: scale(0.9);
-      
-        } 
+  background-color: rgba(250, 218, 37, 0.637);
+  opacity: 0.9;
+  border: 4px solid rgba(245, 73, 21, 0.671);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  min-width: 80px;
+  min-height: 120px;
+  padding: 0.1rem 0.1rem;
+  box-sizing: content-box;
+  &:hover {
+    opacity: 1.4;
+    transform: scale(1.5);
+  }
 }
