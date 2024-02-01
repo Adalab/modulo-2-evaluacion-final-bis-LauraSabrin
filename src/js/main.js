@@ -1,16 +1,14 @@
 "use strict";
 
-
 const addFriendSection = document.querySelector(".js-addFriends");
 const saveBtn = document.querySelector(".js-saveBtn");
 const getBtn = document.querySelector(".js-getBtn");
+const deleteBtn =document.querySelector('.js-deleteBtn');
 const urlAllInfo = "https://randomuser.me/api/?results=10";
 let sectionUser = document.querySelector(".js-allUsers");
-
 let allInfoApi = [];
 let friends = [];
 
-//función para pedir datos API
 const getDataUser = () => {
   fetch(urlAllInfo)
     .then((response) => response.json())
@@ -22,43 +20,30 @@ const getDataUser = () => {
       console.error("Error en la petición fetch:", error);
     });
 };
+
 getDataUser();
 
-//evento click en botón guardar y se almacena en LS los usuarios de pantalla.
-// 1-evento clic
-// 2-guardar en variable los usuarios : nombre variable = función con setItem?
 const handleSave = () => {
-    localStorage.setItem("users", JSON.stringify(allInfoApi));
-
+  localStorage.setItem("users", JSON.stringify(allInfoApi));
 };
 
-//función para encontrar el id del elemento clicado y añadir propiedad isFriend:
 const handleFriend = (event) => {
   const cardClicked = event.currentTarget;
-  
   const cardClickedId = event.currentTarget.id;
- 
-  //con find() obtengo el primer elemento que cumple mi condición
   const whoIsClicked = allInfoApi.find(
     (user) => cardClickedId === user.login.uuid
   );
- 
-  //con findIndex () busco y encuentro la posición o index de un elemento:
+   
   const indexUser = allInfoApi.findIndex(
     (user) => user.login.uuid === cardClickedId
   );
- 
-  //si la posición de
   if (indexUser !== -1) {
     allInfoApi[indexUser].isFriend = true;
-  
     friends.push(whoIsClicked);
-    
   }
   renderTenUsers(friends, sectionUser);
 };
 
-//función para escuchar evento sobre todos los articles (mis tarjetas de usuario)
 const FindId = () => {
   const allCardUser = document.querySelectorAll(".js-all-users-art");
   for (const oneCard of allCardUser) {
@@ -66,7 +51,6 @@ const FindId = () => {
   }
 };
 
-//función actualizar-pintar en pantalla los 10 usuarios random
 const renderTenUsers = () => {
   sectionUser.innerHTML = "";
   for (let i = 0; i < allInfoApi.length; i++) {
@@ -111,22 +95,17 @@ const renderTenUsers = () => {
   FindId();
 };
 
-
 const handleRecover = (event) => {
   event.preventDefault();
-  console.log('Me han clicado!');
   const savedUsers = JSON.parse(localStorage.getItem("users"));
-  console.log(savedUsers);
-  if (savedUsers !== null) {
+    if (savedUsers !== null) {
     allInfoApi = savedUsers;
-    console.log(allInfoApi);
     renderTenUsers();
   } 
 };
 
-
 getBtn.addEventListener("click", handleRecover);
 saveBtn.addEventListener("click", handleSave); 
 
-console.log('Guardaste!')
+
 

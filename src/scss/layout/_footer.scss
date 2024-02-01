@@ -1,10 +1,9 @@
 .footer {
-  background-color: rgba(255, 127, 80, 0.733);
+  background-color: $pinkbg;
   height: 5vh;
   border-top: 3px solid rgba(0, 0, 0, 0.801);
   margin-top: 27px;
-  display: flex;
-  flex-direction: row;
+  @include flexRow;
   align-items: self-end;
   justify-content: space-between;
   position: fixed;
@@ -25,7 +24,7 @@
     }
   }
   &__copy {
-    font-family: "Rubik Burned", system-ui;
+    font-family: $specialText;
     font-weight: 700;
     font-size: small;
     margin-left: 10px;
